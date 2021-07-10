@@ -56,8 +56,10 @@
 		DBB94F5A2699B036004B0700 /* Game Catalogue */ = {
 			isa = PBXGroup;
 			children = (
-				DBB94F5B2699B036004B0700 /* AppDelegate.swift */,
-				DBB94F5D2699B036004B0700 /* SceneDelegate.swift */,
+				DBB94F732699B0AA004B0700 /* Utils */,
+				DBB94F722699B091004B0700 /* Controller */,
+				DBB94F712699B085004B0700 /* View */,
+				DBB94F702699B060004B0700 /* Base */,
 				DBB94F5F2699B036004B0700 /* ViewController.swift */,
 				DBB94F612699B036004B0700 /* Main.storyboard */,
 				DBB94F642699B040004B0700 /* Assets.xcassets */,
@@ -65,6 +67,36 @@
 				DBB94F692699B040004B0700 /* Info.plist */,
 			);
 			path = "Game Catalogue";
+			sourceTree = "<group>";
+		};
+		DBB94F702699B060004B0700 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				DBB94F5B2699B036004B0700 /* AppDelegate.swift */,
+				DBB94F5D2699B036004B0700 /* SceneDelegate.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		DBB94F712699B085004B0700 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DBB94F722699B091004B0700 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		DBB94F732699B0AA004B0700 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
