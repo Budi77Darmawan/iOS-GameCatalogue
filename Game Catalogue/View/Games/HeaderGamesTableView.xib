@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="HeaderGamesTableView" customModule="Game_Catalogue" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NbN-Qe-AQJ">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="100"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="pvE-cg-51j">
+                            <rect key="frame" x="10" y="10" width="394" height="80"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="redraw" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fy6-i7-Qvy">
+                                    <rect key="frame" x="0.0" y="26" width="8" height="28"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="28" id="3dg-3i-WFg"/>
+                                        <constraint firstAttribute="width" constant="8" id="zyP-bg-KHI"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gqo-J8-2y0">
+                                    <rect key="frame" x="16" y="29.5" width="378" height="21.5"/>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="pvE-cg-51j" firstAttribute="leading" secondItem="NbN-Qe-AQJ" secondAttribute="leading" constant="10" id="7Io-eH-4vy"/>
+                        <constraint firstAttribute="trailing" secondItem="pvE-cg-51j" secondAttribute="trailing" constant="10" id="IgS-Hl-pX4"/>
+                        <constraint firstItem="pvE-cg-51j" firstAttribute="top" secondItem="NbN-Qe-AQJ" secondAttribute="top" constant="10" id="P0o-9X-GhJ"/>
+                        <constraint firstAttribute="bottom" secondItem="pvE-cg-51j" secondAttribute="bottom" constant="10" id="ZEC-3h-u7m"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="NbN-Qe-AQJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Jqd-tH-RiQ"/>
+                <constraint firstAttribute="bottom" secondItem="NbN-Qe-AQJ" secondAttribute="bottom" id="Y0l-i8-YnB"/>
+                <constraint firstItem="NbN-Qe-AQJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ll7-fm-woZ"/>
+                <constraint firstAttribute="trailing" secondItem="NbN-Qe-AQJ" secondAttribute="trailing" id="ve8-ZT-khD"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="iconCapsule" destination="fy6-i7-Qvy" id="Lsp-OI-BgO"/>
+                <outlet property="tvTitle" destination="gqo-J8-2y0" id="wBQ-pF-WhS"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="103.79464285714285"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
