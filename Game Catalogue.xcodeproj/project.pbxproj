@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0C36BF0FD53FE0F83A1E9118 /* Pods_Game_Catalogue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82F0318429F2525E2EB39643 /* Pods_Game_Catalogue.framework */; };
+		DB04BEB326FD367900686CFC /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB04BEB226FD367900686CFC /* Observable.swift */; };
+		DB2E5C9F26F557230086E0DD /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2E5C9E26F557230086E0DD /* Debouncer.swift */; };
+		DB2E5CA526F585660086E0DD /* CustomBackgroundView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB2E5CA426F585660086E0DD /* CustomBackgroundView.xib */; };
 		DB66C09C269A638D00C191B5 /* Games.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB66C09B269A638D00C191B5 /* Games.swift */; };
 		DB66C0A1269A6F6100C191B5 /* ConstService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB66C0A0269A6F6100C191B5 /* ConstService.swift */; };
 		DB66C0A5269A71CB00C191B5 /* NetworkCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB66C0A4269A71CB00C191B5 /* NetworkCall.swift */; };
@@ -30,6 +33,17 @@
 		DBB94F822699D8A2004B0700 /* GamesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBB94F802699D8A2004B0700 /* GamesViewController.xib */; };
 		DBC8929A26F23A4B005DF4E2 /* ListGamesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC8929826F23A4B005DF4E2 /* ListGamesViewController.swift */; };
 		DBC8929B26F23A4B005DF4E2 /* ListGamesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBC8929926F23A4B005DF4E2 /* ListGamesViewController.xib */; };
+		DBC892A026F2D87C005DF4E2 /* DetailGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC8929E26F2D87C005DF4E2 /* DetailGameViewController.swift */; };
+		DBC892A126F2D87C005DF4E2 /* DetailGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBC8929F26F2D87C005DF4E2 /* DetailGameViewController.xib */; };
+		DBC892A426F4034A005DF4E2 /* DetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBC892A226F4034A005DF4E2 /* DetailCollectionViewCell.swift */; };
+		DBC892A526F4034A005DF4E2 /* DetailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBC892A326F4034A005DF4E2 /* DetailCollectionViewCell.xib */; };
+		DBD288DE26FEC1960054D9DE /* ShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD288DD26FEC1960054D9DE /* ShimmerView.swift */; };
+		DBD288E426FEC4B80054D9DE /* ShimmerGameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD288E226FEC4B80054D9DE /* ShimmerGameTableViewCell.swift */; };
+		DBD288E526FEC4B80054D9DE /* ShimmerGameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBD288E326FEC4B80054D9DE /* ShimmerGameTableViewCell.xib */; };
+		DBD288E726FEDCD90054D9DE /* ShimmerColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD288E626FEDCD90054D9DE /* ShimmerColor.swift */; };
+		DBD288E926FF1A040054D9DE /* StateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD288E826FF1A040054D9DE /* StateView.swift */; };
+		DBD288EC26FF44C60054D9DE /* ShimmerGamesTopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD288EA26FF44C60054D9DE /* ShimmerGamesTopCollectionViewCell.swift */; };
+		DBD288ED26FF44C60054D9DE /* ShimmerGamesTopCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBD288EB26FF44C60054D9DE /* ShimmerGamesTopCollectionViewCell.xib */; };
 		DBD5AEEC26F15A460016F2C0 /* GamesTopFooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD5AEEA26F15A460016F2C0 /* GamesTopFooterCollectionReusableView.swift */; };
 		DBD5AEED26F15A460016F2C0 /* GamesTopFooterCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBD5AEEB26F15A460016F2C0 /* GamesTopFooterCollectionReusableView.xib */; };
 		DBDCDC5C26E9903E0035D4F5 /* HeaderGamesTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBDCDC5B26E9903E0035D4F5 /* HeaderGamesTableView.xib */; };
@@ -40,6 +54,9 @@
 		82F0318429F2525E2EB39643 /* Pods_Game_Catalogue.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Game_Catalogue.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86255D4F983AC8C26C12ABD4 /* Pods-Game Catalogue.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Game Catalogue.release.xcconfig"; path = "Target Support Files/Pods-Game Catalogue/Pods-Game Catalogue.release.xcconfig"; sourceTree = "<group>"; };
 		C839E2803B655A3776420D66 /* Pods-Game Catalogue.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Game Catalogue.debug.xcconfig"; path = "Target Support Files/Pods-Game Catalogue/Pods-Game Catalogue.debug.xcconfig"; sourceTree = "<group>"; };
+		DB04BEB226FD367900686CFC /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		DB2E5C9E26F557230086E0DD /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
+		DB2E5CA426F585660086E0DD /* CustomBackgroundView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomBackgroundView.xib; sourceTree = "<group>"; };
 		DB66C09B269A638D00C191B5 /* Games.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games.swift; sourceTree = "<group>"; };
 		DB66C0A0269A6F6100C191B5 /* ConstService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstService.swift; sourceTree = "<group>"; };
 		DB66C0A4269A71CB00C191B5 /* NetworkCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCall.swift; sourceTree = "<group>"; };
@@ -64,6 +81,17 @@
 		DBB94F802699D8A2004B0700 /* GamesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GamesViewController.xib; sourceTree = "<group>"; };
 		DBC8929826F23A4B005DF4E2 /* ListGamesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListGamesViewController.swift; sourceTree = "<group>"; };
 		DBC8929926F23A4B005DF4E2 /* ListGamesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ListGamesViewController.xib; sourceTree = "<group>"; };
+		DBC8929E26F2D87C005DF4E2 /* DetailGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailGameViewController.swift; sourceTree = "<group>"; };
+		DBC8929F26F2D87C005DF4E2 /* DetailGameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailGameViewController.xib; sourceTree = "<group>"; };
+		DBC892A226F4034A005DF4E2 /* DetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCollectionViewCell.swift; sourceTree = "<group>"; };
+		DBC892A326F4034A005DF4E2 /* DetailCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailCollectionViewCell.xib; sourceTree = "<group>"; };
+		DBD288DD26FEC1960054D9DE /* ShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerView.swift; sourceTree = "<group>"; };
+		DBD288E226FEC4B80054D9DE /* ShimmerGameTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerGameTableViewCell.swift; sourceTree = "<group>"; };
+		DBD288E326FEC4B80054D9DE /* ShimmerGameTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShimmerGameTableViewCell.xib; sourceTree = "<group>"; };
+		DBD288E626FEDCD90054D9DE /* ShimmerColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerColor.swift; sourceTree = "<group>"; };
+		DBD288E826FF1A040054D9DE /* StateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateView.swift; sourceTree = "<group>"; };
+		DBD288EA26FF44C60054D9DE /* ShimmerGamesTopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerGamesTopCollectionViewCell.swift; sourceTree = "<group>"; };
+		DBD288EB26FF44C60054D9DE /* ShimmerGamesTopCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShimmerGamesTopCollectionViewCell.xib; sourceTree = "<group>"; };
 		DBD5AEEA26F15A460016F2C0 /* GamesTopFooterCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesTopFooterCollectionReusableView.swift; sourceTree = "<group>"; };
 		DBD5AEEB26F15A460016F2C0 /* GamesTopFooterCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GamesTopFooterCollectionReusableView.xib; sourceTree = "<group>"; };
 		DBDCDC5B26E9903E0035D4F5 /* HeaderGamesTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderGamesTableView.xib; sourceTree = "<group>"; };
@@ -106,6 +134,10 @@
 				DBD5AEEB26F15A460016F2C0 /* GamesTopFooterCollectionReusableView.xib */,
 				DBC8929826F23A4B005DF4E2 /* ListGamesViewController.swift */,
 				DBC8929926F23A4B005DF4E2 /* ListGamesViewController.xib */,
+				DBD288E226FEC4B80054D9DE /* ShimmerGameTableViewCell.swift */,
+				DBD288E326FEC4B80054D9DE /* ShimmerGameTableViewCell.xib */,
+				DBD288EA26FF44C60054D9DE /* ShimmerGamesTopCollectionViewCell.swift */,
+				DBD288EB26FF44C60054D9DE /* ShimmerGamesTopCollectionViewCell.xib */,
 			);
 			path = Games;
 			sourceTree = "<group>";
@@ -140,6 +172,8 @@
 			children = (
 				DBAEDA0426D7E2800080091F /* Resource.swift */,
 				DBAEDA0626D7E2970080091F /* GameType.swift */,
+				DBD288E626FEDCD90054D9DE /* ShimmerColor.swift */,
+				DBD288E826FF1A040054D9DE /* StateView.swift */,
 			);
 			path = Enum;
 			sourceTree = "<group>";
@@ -193,7 +227,10 @@
 		DBB94F712699B085004B0700 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				DBC8929D26F2D85C005DF4E2 /* Bookmarked */,
+				DBC8929C26F2D846005DF4E2 /* DetailGames */,
 				DB1F0DD426F02B2F002B4176 /* Games */,
+				DB2E5CA426F585660086E0DD /* CustomBackgroundView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -211,8 +248,29 @@
 			children = (
 				DBAEDA1326D87FF80080091F /* ImageViewExt.swift */,
 				DBAEDA1526D8F9C00080091F /* ConvertDate.swift */,
+				DB2E5C9E26F557230086E0DD /* Debouncer.swift */,
+				DB04BEB226FD367900686CFC /* Observable.swift */,
+				DBD288DD26FEC1960054D9DE /* ShimmerView.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		DBC8929C26F2D846005DF4E2 /* DetailGames */ = {
+			isa = PBXGroup;
+			children = (
+				DBC8929E26F2D87C005DF4E2 /* DetailGameViewController.swift */,
+				DBC8929F26F2D87C005DF4E2 /* DetailGameViewController.xib */,
+				DBC892A226F4034A005DF4E2 /* DetailCollectionViewCell.swift */,
+				DBC892A326F4034A005DF4E2 /* DetailCollectionViewCell.xib */,
+			);
+			path = DetailGames;
+			sourceTree = "<group>";
+		};
+		DBC8929D26F2D85C005DF4E2 /* Bookmarked */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Bookmarked;
 			sourceTree = "<group>";
 		};
 		E882D9307BED671FDAF96A1D /* Frameworks */ = {
@@ -283,13 +341,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBB94F682699B040004B0700 /* LaunchScreen.storyboard in Resources */,
+				DBC892A126F2D87C005DF4E2 /* DetailGameViewController.xib in Resources */,
 				DBD5AEED26F15A460016F2C0 /* GamesTopFooterCollectionReusableView.xib in Resources */,
+				DBD288ED26FF44C60054D9DE /* ShimmerGamesTopCollectionViewCell.xib in Resources */,
 				DB8D78BD26E4C0520071796A /* GameTableViewCell.xib in Resources */,
 				DBAEC5B026EC64C8001E1B16 /* GameTopCollectionViewCell.xib in Resources */,
 				DBC8929B26F23A4B005DF4E2 /* ListGamesViewController.xib in Resources */,
+				DB2E5CA526F585660086E0DD /* CustomBackgroundView.xib in Resources */,
+				DBD288E526FEC4B80054D9DE /* ShimmerGameTableViewCell.xib in Resources */,
 				DBB94F652699B040004B0700 /* Assets.xcassets in Resources */,
 				DBDCDC5C26E9903E0035D4F5 /* HeaderGamesTableView.xib in Resources */,
 				DBB94F822699D8A2004B0700 /* GamesViewController.xib in Resources */,
+				DBC892A526F4034A005DF4E2 /* DetailCollectionViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,14 +406,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBD5AEEC26F15A460016F2C0 /* GamesTopFooterCollectionReusableView.swift in Sources */,
+				DBD288EC26FF44C60054D9DE /* ShimmerGamesTopCollectionViewCell.swift in Sources */,
 				DBB94F812699D8A2004B0700 /* GamesViewController.swift in Sources */,
+				DB2E5C9F26F557230086E0DD /* Debouncer.swift in Sources */,
 				DBAEDA1626D8F9C00080091F /* ConvertDate.swift in Sources */,
+				DBC892A426F4034A005DF4E2 /* DetailCollectionViewCell.swift in Sources */,
 				DB66C0A5269A71CB00C191B5 /* NetworkCall.swift in Sources */,
 				DBC8929A26F23A4B005DF4E2 /* ListGamesViewController.swift in Sources */,
+				DBD288E926FF1A040054D9DE /* StateView.swift in Sources */,
+				DBC892A026F2D87C005DF4E2 /* DetailGameViewController.swift in Sources */,
+				DBD288DE26FEC1960054D9DE /* ShimmerView.swift in Sources */,
 				DB66C0AA269A733700C191B5 /* GamesViewModel.swift in Sources */,
 				DBAEDA0526D7E2800080091F /* Resource.swift in Sources */,
+				DBD288E426FEC4B80054D9DE /* ShimmerGameTableViewCell.swift in Sources */,
 				DB8D78BC26E4C0520071796A /* GameTableViewCell.swift in Sources */,
 				DBAEDA1426D87FF80080091F /* ImageViewExt.swift in Sources */,
+				DBD288E726FEDCD90054D9DE /* ShimmerColor.swift in Sources */,
 				DBAEDA0A26D7E2CA0080091F /* Const.swift in Sources */,
 				DB66C09C269A638D00C191B5 /* Games.swift in Sources */,
 				DBAEDA0726D7E2970080091F /* GameType.swift in Sources */,
@@ -360,6 +431,7 @@
 				DBB94F5E2699B036004B0700 /* SceneDelegate.swift in Sources */,
 				DBEF529426E823DA00243206 /* HeaderGamesTableView.swift in Sources */,
 				DBAEC5AF26EC64C8001E1B16 /* GameTopCollectionViewCell.swift in Sources */,
+				DB04BEB326FD367900686CFC /* Observable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

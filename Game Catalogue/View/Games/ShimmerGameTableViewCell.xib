@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="ShimmerGameTableViewCell" customModule="Game_Catalogue" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="522" height="159"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="522" height="159"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Z05-KA-i0W" customClass="ShimmerView" customModule="Game_Catalogue" customModuleProvider="target">
+                        <rect key="frame" x="10" y="10" width="502" height="139"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="mee-tm-Emv">
+                                <rect key="frame" x="10" y="10" width="482" height="119"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="V2T-h9-QdF" customClass="ShimmerView" customModule="Game_Catalogue" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="14.5" width="90" height="90"/>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="90" id="BVv-V0-4Nf"/>
+                                            <constraint firstAttribute="height" constant="90" id="Wve-QV-VRB"/>
+                                        </constraints>
+                                    </view>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Klz-rt-mQs">
+                                        <rect key="frame" x="105" y="27.5" width="377" height="64"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gNF-o6-WUw" customClass="ShimmerView" customModule="Game_Catalogue" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="0.0" width="377" height="22"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="22" id="VHG-lK-W9t"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jG0-DC-H1E" customClass="ShimmerView" customModule="Game_Catalogue" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="27" width="377" height="16"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="16" id="eE0-tJ-tFA"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lYJ-Bv-bMh" customClass="ShimmerView" customModule="Game_Catalogue" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="48" width="377" height="16"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="16" id="K5y-9C-Td3"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="mee-tm-Emv" firstAttribute="top" secondItem="Z05-KA-i0W" secondAttribute="top" constant="10" id="7Pf-DL-7jh"/>
+                            <constraint firstItem="mee-tm-Emv" firstAttribute="leading" secondItem="Z05-KA-i0W" secondAttribute="leading" constant="10" id="V74-rn-TaP"/>
+                            <constraint firstAttribute="trailing" secondItem="mee-tm-Emv" secondAttribute="trailing" constant="10" id="VFv-1e-RNz"/>
+                            <constraint firstAttribute="bottom" secondItem="mee-tm-Emv" secondAttribute="bottom" constant="10" id="lvr-93-JsC"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Z05-KA-i0W" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="7Fn-80-2Vm"/>
+                    <constraint firstAttribute="bottom" secondItem="Z05-KA-i0W" secondAttribute="bottom" constant="10" id="NQH-xC-NYV"/>
+                    <constraint firstAttribute="trailing" secondItem="Z05-KA-i0W" secondAttribute="trailing" constant="10" id="bYB-RM-HpA"/>
+                    <constraint firstItem="Z05-KA-i0W" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="gYl-qL-1fS"/>
+                </constraints>
+            </tableViewCellContentView>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="imgView" destination="V2T-h9-QdF" id="dzR-Em-Wg4"/>
+                <outlet property="rootView" destination="Z05-KA-i0W" id="3eq-IF-Ln2"/>
+                <outlet property="tvRating" destination="lYJ-Bv-bMh" id="IhX-aY-Psa"/>
+                <outlet property="tvReleased" destination="jG0-DC-H1E" id="h8f-Gz-fAR"/>
+                <outlet property="tvTitle" destination="gNF-o6-WUw" id="2Vs-2M-Bi2"/>
+            </connections>
+            <point key="canvasLocation" x="139" y="104"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

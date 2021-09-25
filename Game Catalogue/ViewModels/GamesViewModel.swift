@@ -12,21 +12,11 @@ class GamesViewModel: NSObject {
   private var onLoadNextPage = false
   private var pages = 1
   
-  private(set) var listGames = Resource<Games>.loading {
-    didSet {
-      self.bindListGamesToController(listGames)
-    }
-  }
+  var listGames: Observable<Resource<Games>> = Observable(nil)
+  var listGamesTopRated: Observable<Resource<Games>> = Observable(nil)
+  var listGamesBySearch: Observable<Resource<Games>> = Observable(nil)
+  var detailGame: Observable<Resource<DetailGame>> = Observable(nil)
   
-  private(set) var listGamesTopRated = Resource<Games>.loading {
-    didSet {
-      self.bindListGamesTopRatedToController(listGamesTopRated)
-    }
-  }
-  
-  var bindListGamesToController: ((Resource<Games>) -> Void) = {_ in }
-  
-  var bindListGamesTopRatedToController: ((Resource<Games>) -> Void) = {_ in }
   
   func getDataGames(_ page: String = "1") {
     let params: Parameters = [
@@ -34,15 +24,15 @@ class GamesViewModel: NSObject {
       "key": ConstService.KeyAPI
     ]
     
-    self.listGames = Resource.loading
+    self.listGames.value = Resource.loading
     NetworkCall(url: ConstService.rawgType.games, params: params).executeQuery() {
       (result: Result<Games, Error>) in
       switch result {
       case .success(let games):
-        self.listGames = Resource.success(games)
+        self.listGames.value = Resource.success(games)
         
       case .failure(let error):
-        self.listGames = Resource.error(error.localizedDescription, nil)
+        self.listGames.value = Resource.error(error.localizedDescription, nil)
       }
     }
   }
@@ -55,15 +45,54 @@ class GamesViewModel: NSObject {
     ]
     let uri = ConstService.rawgType.games
     
-    self.listGamesTopRated = Resource.loading
+    self.listGamesTopRated.value = Resource.loading
     NetworkCall(url: uri, params: params).executeQuery() {
       (result: Result<Games, Error>) in
       switch result {
       case .success(let games):
-        self.listGamesTopRated = Resource.success(games)
+        self.listGamesTopRated.value = Resource.success(games)
         
       case .failure(let error):
-        self.listGamesTopRated = Resource.error(error.localizedDescription, nil)
+        self.listGamesTopRated.value = Resource.error(error.localizedDescription, nil)
+      }
+    }
+  }
+  
+  func getDetailGameById(id: Int) {
+    let params: Parameters = [
+      "key": ConstService.KeyAPI
+    ]
+    let uri = ConstService.rawgType.detailGameById.replacingOccurrences(of: "{id}", with: String(id))
+    
+    self.detailGame.value = Resource.loading
+    NetworkCall(url: uri, params: params).executeQuery() {
+      (result: Result<DetailGame, Error>) in
+      switch result {
+      case .success(let detail):
+        self.detailGame.value = Resource.success(detail)
+      case .failure(let error):
+        self.detailGame.value = Resource.error(error.localizedDescription, nil)
+      }
+    }
+  }
+  
+  func getGamesBySearch(query: String) {
+    let params: Parameters = [
+      "page": "1",
+      "search": query,
+      "key": ConstService.KeyAPI
+    ]
+    let uri = ConstService.rawgType.games
+    
+    self.listGamesBySearch.value = Resource.loading
+    NetworkCall(url: uri, params: params).executeQuery() {
+      (result: Result<Games, Error>) in
+      switch result {
+      case .success(let games):
+        self.listGamesBySearch.value = Resource.success(games)
+        
+      case .failure(let error):
+        self.listGamesBySearch.value = Resource.error(error.localizedDescription, nil)
       }
     }
   }
@@ -86,7 +115,7 @@ class GamesViewModel: NSObject {
         "key": ConstService.KeyAPI
       ]
       
-      switch self.listGames {
+      switch self.listGames.value {
       case .success(data: let data):
         for oldGame in data?.results ?? [] {
           oldData.append(oldGame)
@@ -101,7 +130,7 @@ class GamesViewModel: NSObject {
         "key": ConstService.KeyAPI
       ]
       
-      switch self.listGamesTopRated {
+      switch self.listGamesTopRated.value {
       case .success(data: let data):
         for oldGame in data?.results ?? [] {
           oldData.append(oldGame)
@@ -122,7 +151,7 @@ class GamesViewModel: NSObject {
         
         switch type {
         case .normal:
-          self.listGames = Resource.success(
+          self.listGames.value = Resource.success(
             Games(
               count: games.count,
               next: games.next,
@@ -130,7 +159,7 @@ class GamesViewModel: NSObject {
               results: newData)
           )
         case .topRated:
-          self.listGamesTopRated = Resource.success(
+          self.listGamesTopRated.value = Resource.success(
             Games(
               count: games.count,
               next: games.next,
@@ -156,7 +185,7 @@ class GamesViewModel: NSObject {
         var listGame: [Game] = []
         switch type {
         case .normal:
-          switch self.listGames {
+          switch self.listGames.value {
           case .success(data: let data):
             for game in data?.results ?? [] {
               listGame.append(game)
@@ -166,7 +195,7 @@ class GamesViewModel: NSObject {
           }
           
         case .topRated:
-          switch self.listGamesTopRated {
+          switch self.listGamesTopRated.value {
           case .success(data: let data):
             for game in data?.results ?? [] {
               listGame.append(game)

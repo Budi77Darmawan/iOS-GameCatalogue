@@ -31,9 +31,9 @@ class ListGamesViewController: UIViewController {
     }
   }
   
-  func observerGameDefault() {
+  private func observerGameDefault() {
     gamesViewModel.getDataGames()
-    gamesViewModel.bindListGamesToController = { games in
+    gamesViewModel.listGames.bind { games in
       switch games {
       case .loading:
         print("LOADING")
@@ -46,13 +46,15 @@ class ListGamesViewController: UIViewController {
           self.listGames.append(contentsOf: results)
           self.gamesTableView.reloadData()
         }
+      case .none:
+        break
       }
     }
   }
   
-  func observerGameTop() {
+  private func observerGameTop() {
     gamesViewModel.getGamesTopRated()
-    gamesViewModel.bindListGamesTopRatedToController = { games in
+    gamesViewModel.listGamesTopRated.bind { games in
       switch games {
       case .loading:
         print("LOADING")
@@ -65,11 +67,13 @@ class ListGamesViewController: UIViewController {
           self.listGames.append(contentsOf: results)
           self.gamesTableView.reloadData()
         }
+      case .none:
+        break
       }
     }
   }
   
-  func initTableView() {
+  private func initTableView() {
     gamesTableView.register(GameTableViewCell.nib(),
                             forCellReuseIdentifier: GameTableViewCell.identifier)
     gamesTableView.register(HeaderGamesTableView.nib(),
@@ -77,6 +81,11 @@ class ListGamesViewController: UIViewController {
     gamesTableView.delegate = self
     gamesTableView.dataSource = self
     gamesTableView.tableFooterView = UIView()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    title = "Games"
+    navigationItem.largeTitleDisplayMode = .never
   }
 }
 

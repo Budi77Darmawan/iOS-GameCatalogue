@@ -12,6 +12,7 @@
             <connections>
                 <outlet property="gamesTableView" destination="Jqd-l5-TdS" id="NHI-n1-xt8"/>
                 <outlet property="gamesTopCollectionView" destination="qT9-kl-CcZ" id="pbk-IS-jjQ"/>
+                <outlet property="headerTop" destination="acw-hV-aiW" id="0L8-Ep-NJ1"/>
                 <outlet property="heightTable" destination="2d4-6X-Zd1" id="eU9-Wg-9Px"/>
                 <outlet property="iconCapsule" destination="wuk-uz-khE" id="C2p-oi-CGh"/>
                 <outlet property="scrollView" destination="OCd-cR-4cw" id="iOL-jI-yLJ"/>

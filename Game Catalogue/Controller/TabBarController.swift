@@ -12,11 +12,15 @@ class TabBarController: UITabBarController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    let gamesViewController = GamesViewController()
-    
-    gamesViewController.tabBarItem = UITabBarItem(title: "Games", image: UIImage(systemName: "gamecontroller.fill"), tag: 0)
-    
-    viewControllers =  [gamesViewController]
+//    let gamesViewController = GamesViewController()
+//    
+//    gamesViewController.tabBarItem = UITabBarItem(title: "Games", image: UIImage(systemName: "gamecontroller.fill"), tag: 0)
+//    
+//    let gamesViewController2 = GamesViewController()
+//    
+//    gamesViewController2.tabBarItem = UITabBarItem(title: "Games", image: UIImage(systemName: "gamecontroller.fill"), tag: 0)
+//    
+//    viewControllers =  [gamesViewController, gamesViewController2]
   }
   
   

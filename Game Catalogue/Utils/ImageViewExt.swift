@@ -32,3 +32,10 @@ extension UIImageView {
     self.clipsToBounds = true
   }
 }
+
+extension UIView {
+  func cornerRadius(_ radius: CGFloat = 0) {
+    self.layer.cornerRadius = radius
+    self.clipsToBounds = true
+  }
+}
