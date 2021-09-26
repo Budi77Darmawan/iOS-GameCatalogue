@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		0C36BF0FD53FE0F83A1E9118 /* Pods_Game_Catalogue.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82F0318429F2525E2EB39643 /* Pods_Game_Catalogue.framework */; };
 		DB04BEB326FD367900686CFC /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB04BEB226FD367900686CFC /* Observable.swift */; };
+		DB1BF177270003200003336E /* DatabaseCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1BF176270003200003336E /* DatabaseCall.swift */; };
+		DB1BF179270003470003336E /* ObjGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1BF178270003470003336E /* ObjGame.swift */; };
 		DB2E5C9F26F557230086E0DD /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2E5C9E26F557230086E0DD /* Debouncer.swift */; };
 		DB2E5CA526F585660086E0DD /* CustomBackgroundView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB2E5CA426F585660086E0DD /* CustomBackgroundView.xib */; };
 		DB66C09C269A638D00C191B5 /* Games.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB66C09B269A638D00C191B5 /* Games.swift */; };
@@ -56,6 +58,8 @@
 		86255D4F983AC8C26C12ABD4 /* Pods-Game Catalogue.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Game Catalogue.release.xcconfig"; path = "Target Support Files/Pods-Game Catalogue/Pods-Game Catalogue.release.xcconfig"; sourceTree = "<group>"; };
 		C839E2803B655A3776420D66 /* Pods-Game Catalogue.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Game Catalogue.debug.xcconfig"; path = "Target Support Files/Pods-Game Catalogue/Pods-Game Catalogue.debug.xcconfig"; sourceTree = "<group>"; };
 		DB04BEB226FD367900686CFC /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
+		DB1BF176270003200003336E /* DatabaseCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseCall.swift; sourceTree = "<group>"; };
+		DB1BF178270003470003336E /* ObjGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjGame.swift; sourceTree = "<group>"; };
 		DB2E5C9E26F557230086E0DD /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
 		DB2E5CA426F585660086E0DD /* CustomBackgroundView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomBackgroundView.xib; sourceTree = "<group>"; };
 		DB66C09B269A638D00C191B5 /* Games.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games.swift; sourceTree = "<group>"; };
@@ -121,6 +125,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		DB1BF1752700030E0003336E /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				DB1BF176270003200003336E /* DatabaseCall.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
 		DB1F0DD426F02B2F002B4176 /* Games */ = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				DB66C09B269A638D00C191B5 /* Games.swift */,
+				DB1BF178270003470003336E /* ObjGame.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -248,6 +261,7 @@
 		DBB94F732699B0AA004B0700 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				DB1BF1752700030E0003336E /* Database */,
 				DBAEDA1326D87FF80080091F /* ImageViewExt.swift */,
 				DBAEDA1526D8F9C00080091F /* ConvertDate.swift */,
 				DB2E5C9E26F557230086E0DD /* Debouncer.swift */,
@@ -423,9 +437,11 @@
 				DBAEDA0526D7E2800080091F /* Resource.swift in Sources */,
 				DBD288E426FEC4B80054D9DE /* ShimmerGameTableViewCell.swift in Sources */,
 				DB8D78BC26E4C0520071796A /* GameTableViewCell.swift in Sources */,
+				DB1BF179270003470003336E /* ObjGame.swift in Sources */,
 				DBAEDA1426D87FF80080091F /* ImageViewExt.swift in Sources */,
 				DBD288E726FEDCD90054D9DE /* ShimmerColor.swift in Sources */,
 				DBAEDA0A26D7E2CA0080091F /* Const.swift in Sources */,
+				DB1BF177270003200003336E /* DatabaseCall.swift in Sources */,
 				DB66C09C269A638D00C191B5 /* Games.swift in Sources */,
 				DBD288EF26FF69200054D9DE /* ConvertType.swift in Sources */,
 				DBAEDA0726D7E2970080091F /* GameType.swift in Sources */,

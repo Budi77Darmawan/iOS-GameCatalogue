@@ -18,7 +18,7 @@ struct Games: Decodable {
   let results: [Game]
 }
 
-struct Game: Decodable, Identifiable {
+struct Game: Decodable {
   let id: Int
   let slug: String
   let name: String
@@ -42,7 +42,7 @@ struct Genre: Decodable {
   let name: String
 }
 
-struct DetailGame: Decodable, Identifiable {
+struct DetailGame: Decodable {
   let id: Int
   let description: String
   let metacritic: Int?

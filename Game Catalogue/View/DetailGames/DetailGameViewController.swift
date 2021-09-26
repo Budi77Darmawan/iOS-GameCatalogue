@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 import Toast_Swift
 
 struct AttributDetailGame {
@@ -30,20 +31,35 @@ class DetailGameViewController: UIViewController {
     return GamesViewModel()
   }()
   private var attributDetailGame = [AttributDetailGame]()
+  private var detailGame: DetailGame? = nil
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    setupButtonBookmark(true)
+    checkDatabase()
     initCollectionView()
     observerDetailGame()
   }
   
-  private func observerDetailGame() {
+  private func checkDatabase() {
     guard let id = gameID else {
       return
     }
     
+    let detailDB = DatabaseCall.getGameById(id: id)
+    if detailDB != nil {
+      detailGame = detailDB
+      isBookmark = true
+      guard let detail = detailGame else { return }
+      setupView(detail: detail)
+    } else {
+      gamesViewModel.getDetailGameById(id: id)
+      isBookmark = false
+    }
+    setupButtonBookmark()
+  }
+  
+  private func observerDetailGame() {
     gamesViewModel.detailGame.bind { detailGame in
       switch detailGame {
       case .loading:
@@ -53,7 +69,7 @@ class DetailGameViewController: UIViewController {
       case .success(let data):
         DispatchQueue.main.async {
           guard let detail = data else { return }
-          self.title = detail.name
+          self.detailGame = detail
           self.setupView(detail: detail)
           self.view.hideToastActivity()
         }
@@ -61,8 +77,6 @@ class DetailGameViewController: UIViewController {
         break
       }
     }
-    
-    gamesViewModel.getDetailGameById(id: id)
   }
   
   private func initCollectionView() {
@@ -73,13 +87,14 @@ class DetailGameViewController: UIViewController {
   }
   
   private func setupView(detail: DetailGame) {
+    self.title = detail.name
     tvTitle.text = detail.name
     let description = detail.description.isEmpty ? "No Description" : (detail.description)
     tvDescription.text = description
       .replacingOccurrences(of: "\r\n", with:"" )
       .replacingOccurrences(of: "\n\n", with:"\n" )
     imgGame.setImage(detail.backgroundImage)
-    btnBookmark.addTarget(self, action: #selector(setupButtonBookmark), for: .touchUpInside)
+    btnBookmark.addTarget(self, action: #selector(updateStatusGame), for: .touchUpInside)
     
     let rating = detail.rating != nil ? String(detail.rating ?? 0) : "-"
     let ratingCount = detail.ratingCount != nil ? String(detail.ratingCount ?? 0) : "0"
@@ -93,38 +108,48 @@ class DetailGameViewController: UIViewController {
     self.attributDetailGame.append(AttributDetailGame(title: "Developer", value: ConvertType.listDevelopersToString(list: detail.developers)))
     self.attributDetailGame.append(AttributDetailGame(title: "Publisher", value: ConvertType.listPublishersToString(list: detail.publishers)))
     self.attributDetailGame.append(AttributDetailGame(title: "Age Rating", value: detail.esrbRating?.name ?? "-"))
-
+    
     self.detailCollectionView.reloadData()
   }
   
-  @objc private func setupButtonBookmark(_ firstInit: Bool = false) {
-    if !firstInit {
-      isBookmark = !isBookmark
+  @objc
+  private func updateStatusGame() {
+    guard let detail = detailGame else { return }
+    if isBookmark {
+      let stateDelete = DatabaseCall.deleteFromDatabase(gameId: detail.id)
+      if stateDelete {
+        isBookmark = !isBookmark
+        self.view.makeToast("Has been removed from bookmarks")
+      }
+    } else {
+      let stateAdd = DatabaseCall.addToDatabase(game: detail)
+      if stateAdd {
+        isBookmark = !isBookmark
+        self.view.makeToast("Successfully added to bookmarks")
+      }
     }
+    setupButtonBookmark()
+  }
+  
+  private func setupButtonBookmark() {
     if isBookmark {
       btnBookmark.setTitle("Bookmarked", for: .normal)
       btnBookmark.setTitleColor(.white, for: .normal)
       btnBookmark.setImage(UIImage(systemName: "bookmark"), for: .normal)
       btnBookmark.tintColor = .white
       btnBookmark.backgroundColor = .systemBlue
-      if !firstInit {
-        self.view.makeToast("Successfully added to bookmarks")
-      }
     } else {
       btnBookmark.setTitle("Add to Bookmark", for: .normal)
       btnBookmark.setTitleColor(.systemBlue, for: .normal)
       btnBookmark.setImage(UIImage(systemName: "bookmark.fill"), for: .normal)
       btnBookmark.tintColor = .systemBlue
       btnBookmark.backgroundColor = .clear
-      if !firstInit {
-        self.view.makeToast("Has been removed from bookmarks")
-      }
     }
     btnBookmark.layer.cornerRadius = 8
     btnBookmark.layer.borderWidth = 1
     btnBookmark.layer.borderColor = UIColor.systemBlue.cgColor
   }
-
+  
   override func viewWillAppear(_ animated: Bool) {
     title = "Detail Game"
     navigationItem.largeTitleDisplayMode = .never
