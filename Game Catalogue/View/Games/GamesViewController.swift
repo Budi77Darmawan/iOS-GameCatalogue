@@ -153,16 +153,16 @@ class GamesViewController: UIViewController {
   }
   
   private func navigateToDetailGame(id: Int) {
-//    let detailVC = DetailGameViewController(nibName: "DetailGameViewController", bundle: nil)
-//    detailVC.gameID = id
-//    self.navigationController?.pushViewController(detailVC, animated: true)
+    let detailVC = DetailGameViewController(nibName: "DetailGameViewController", bundle: nil)
+    detailVC.gameID = id
+    self.navigationController?.pushViewController(detailVC, animated: true)
   }
   
   @objc private func navigateToSeeAllGamesTop() {
-//    let listGameVC = ListGamesViewController(nibName: "ListGamesViewController", bundle: nil)
-//    listGameVC.titleTable = "Top Rated"
-//    listGameVC.gameType = GameType.topRated
-//    self.navigationController?.pushViewController(listGameVC, animated: true)
+    let listGameVC = ListGamesViewController(nibName: "ListGamesViewController", bundle: nil)
+    listGameVC.titleTable = "Top Rated"
+    listGameVC.gameType = GameType.topRated
+    self.navigationController?.pushViewController(listGameVC, animated: true)
   }
   
   override func viewWillAppear(_ animated: Bool) {

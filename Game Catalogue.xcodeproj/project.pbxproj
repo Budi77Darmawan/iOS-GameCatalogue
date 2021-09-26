@@ -44,6 +44,7 @@
 		DBD288E926FF1A040054D9DE /* StateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD288E826FF1A040054D9DE /* StateView.swift */; };
 		DBD288EC26FF44C60054D9DE /* ShimmerGamesTopCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD288EA26FF44C60054D9DE /* ShimmerGamesTopCollectionViewCell.swift */; };
 		DBD288ED26FF44C60054D9DE /* ShimmerGamesTopCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBD288EB26FF44C60054D9DE /* ShimmerGamesTopCollectionViewCell.xib */; };
+		DBD288EF26FF69200054D9DE /* ConvertType.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD288EE26FF69200054D9DE /* ConvertType.swift */; };
 		DBD5AEEC26F15A460016F2C0 /* GamesTopFooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBD5AEEA26F15A460016F2C0 /* GamesTopFooterCollectionReusableView.swift */; };
 		DBD5AEED26F15A460016F2C0 /* GamesTopFooterCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBD5AEEB26F15A460016F2C0 /* GamesTopFooterCollectionReusableView.xib */; };
 		DBDCDC5C26E9903E0035D4F5 /* HeaderGamesTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBDCDC5B26E9903E0035D4F5 /* HeaderGamesTableView.xib */; };
@@ -92,6 +93,7 @@
 		DBD288E826FF1A040054D9DE /* StateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateView.swift; sourceTree = "<group>"; };
 		DBD288EA26FF44C60054D9DE /* ShimmerGamesTopCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerGamesTopCollectionViewCell.swift; sourceTree = "<group>"; };
 		DBD288EB26FF44C60054D9DE /* ShimmerGamesTopCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShimmerGamesTopCollectionViewCell.xib; sourceTree = "<group>"; };
+		DBD288EE26FF69200054D9DE /* ConvertType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvertType.swift; sourceTree = "<group>"; };
 		DBD5AEEA26F15A460016F2C0 /* GamesTopFooterCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamesTopFooterCollectionReusableView.swift; sourceTree = "<group>"; };
 		DBD5AEEB26F15A460016F2C0 /* GamesTopFooterCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GamesTopFooterCollectionReusableView.xib; sourceTree = "<group>"; };
 		DBDCDC5B26E9903E0035D4F5 /* HeaderGamesTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderGamesTableView.xib; sourceTree = "<group>"; };
@@ -251,6 +253,7 @@
 				DB2E5C9E26F557230086E0DD /* Debouncer.swift */,
 				DB04BEB226FD367900686CFC /* Observable.swift */,
 				DBD288DD26FEC1960054D9DE /* ShimmerView.swift */,
+				DBD288EE26FF69200054D9DE /* ConvertType.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				DBD288E726FEDCD90054D9DE /* ShimmerColor.swift in Sources */,
 				DBAEDA0A26D7E2CA0080091F /* Const.swift in Sources */,
 				DB66C09C269A638D00C191B5 /* Games.swift in Sources */,
+				DBD288EF26FF69200054D9DE /* ConvertType.swift in Sources */,
 				DBAEDA0726D7E2970080091F /* GameType.swift in Sources */,
 				DBB94F782699D7AB004B0700 /* TabBarController.swift in Sources */,
 				DB66C0A1269A6F6100C191B5 /* ConstService.swift in Sources */,
