@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit
 import Kingfisher
 
 extension UIImageView {
@@ -29,13 +28,6 @@ extension UIImageView {
 
   func rounded(_ rounded: CGFloat = 0) {
     self.layer.cornerRadius = rounded
-    self.clipsToBounds = true
-  }
-}
-
-extension UIView {
-  func cornerRadius(_ radius: CGFloat = 0) {
-    self.layer.cornerRadius = radius
     self.clipsToBounds = true
   }
 }

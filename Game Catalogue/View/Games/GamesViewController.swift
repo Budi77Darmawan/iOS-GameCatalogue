@@ -142,6 +142,23 @@ class GamesViewController: UIViewController {
   
   private func updateTableView() {
     DispatchQueue.main.async {
+      if self.listGamesByQuery.isEmpty {
+        self.gamesTableView.setBackgroundViewWithImage(image: UIImage(named: "icon_error_search"),
+                                                       message: "Game \"\(self.querySearch)\" not found!",
+                                                       insideScrollView: true)
+      } else {
+        self.gamesTableView.restore(separator: .singleLine)
+      }
+      self.gamesTableView.reloadData()
+    }
+  }
+  
+  private func setEmptyTableView() {
+    DispatchQueue.main.async {
+      self.listGamesByQuery.removeAll()
+      self.gamesTableView.setBackgroundViewWithImage(image: UIImage(named: "icon_search"),
+                                                     message: "Waiting to search ...",
+                                                     insideScrollView: true)
       self.gamesTableView.reloadData()
     }
   }
@@ -169,10 +186,6 @@ class GamesViewController: UIViewController {
     navigationController?.navigationBar.prefersLargeTitles = true
     navigationItem.largeTitleDisplayMode = .always
     tabBarController?.tabBar.isHidden = false
-  }
-  
-  override func viewWillDisappear(_ animated: Bool) {
-    tabBarController?.tabBar.isHidden = true
   }
 }
 
@@ -327,9 +340,7 @@ extension GamesViewController: UISearchResultsUpdating, UISearchControllerDelega
     headerTop.isHidden = true
     gamesTopCollectionView.isHidden = true
     tabBarController?.tabBar.isHidden = true
-    DispatchQueue.main.async {
-      self.gamesTableView.reloadData()
-    }
+    setEmptyTableView()
   }
   
   func didDismissSearchController(_ searchController: UISearchController) {
@@ -353,6 +364,7 @@ extension GamesViewController: UISearchResultsUpdating, UISearchControllerDelega
     self.querySearch = searchText
     
     if self.querySearch.isEmpty {
+      setEmptyTableView()
       debouncer.cancel()
     } else {
       debouncer.call()

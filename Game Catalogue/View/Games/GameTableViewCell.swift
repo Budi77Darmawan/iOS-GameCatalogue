@@ -31,6 +31,16 @@ class GameTableViewCell: UITableViewCell {
     imgGame.setImage(game.backgroundImage)
   }
   
+  func configureCell(_ game: DetailGame) {
+    tvTitle.text = game.name
+    let ratingCount = game.ratingCount == nil ? "(0)" : "(\(game.ratingCount ?? 0))"
+    tvRatingCount.text = ratingCount
+    
+    let date = game.released == nil ? "-" : ConvertDate.formatDate(date: game.released ?? "")
+    tvReleased.text = "Released: \(date)"
+    imgGame.setImage(game.backgroundImage)
+  }
+  
   override func awakeFromNib() {
     super.awakeFromNib()
     imgGame.rounded(10)

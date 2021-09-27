@@ -11,8 +11,12 @@
 		DB04BEB326FD367900686CFC /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB04BEB226FD367900686CFC /* Observable.swift */; };
 		DB1BF177270003200003336E /* DatabaseCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1BF176270003200003336E /* DatabaseCall.swift */; };
 		DB1BF179270003470003336E /* ObjGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1BF178270003470003336E /* ObjGame.swift */; };
+		DB1BF17C270015280003336E /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1BF17A270015280003336E /* BookmarksViewController.swift */; };
+		DB1BF17D270015280003336E /* BookmarksViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB1BF17B270015280003336E /* BookmarksViewController.xib */; };
 		DB2E5C9F26F557230086E0DD /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2E5C9E26F557230086E0DD /* Debouncer.swift */; };
 		DB2E5CA526F585660086E0DD /* CustomBackgroundView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB2E5CA426F585660086E0DD /* CustomBackgroundView.xib */; };
+		DB5BDF64270136550048A9CD /* TableViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5BDF63270136550048A9CD /* TableViewExt.swift */; };
+		DB5BDF66270136680048A9CD /* ViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5BDF65270136680048A9CD /* ViewExt.swift */; };
 		DB66C09C269A638D00C191B5 /* Games.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB66C09B269A638D00C191B5 /* Games.swift */; };
 		DB66C0A1269A6F6100C191B5 /* ConstService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB66C0A0269A6F6100C191B5 /* ConstService.swift */; };
 		DB66C0A5269A71CB00C191B5 /* NetworkCall.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB66C0A4269A71CB00C191B5 /* NetworkCall.swift */; };
@@ -60,8 +64,12 @@
 		DB04BEB226FD367900686CFC /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		DB1BF176270003200003336E /* DatabaseCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseCall.swift; sourceTree = "<group>"; };
 		DB1BF178270003470003336E /* ObjGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjGame.swift; sourceTree = "<group>"; };
+		DB1BF17A270015280003336E /* BookmarksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
+		DB1BF17B270015280003336E /* BookmarksViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookmarksViewController.xib; sourceTree = "<group>"; };
 		DB2E5C9E26F557230086E0DD /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
 		DB2E5CA426F585660086E0DD /* CustomBackgroundView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomBackgroundView.xib; sourceTree = "<group>"; };
+		DB5BDF63270136550048A9CD /* TableViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExt.swift; sourceTree = "<group>"; };
+		DB5BDF65270136680048A9CD /* ViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExt.swift; sourceTree = "<group>"; };
 		DB66C09B269A638D00C191B5 /* Games.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games.swift; sourceTree = "<group>"; };
 		DB66C0A0269A6F6100C191B5 /* ConstService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstService.swift; sourceTree = "<group>"; };
 		DB66C0A4269A71CB00C191B5 /* NetworkCall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCall.swift; sourceTree = "<group>"; };
@@ -156,6 +164,16 @@
 			path = Games;
 			sourceTree = "<group>";
 		};
+		DB5BDF62270135EF0048A9CD /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				DBAEDA1326D87FF80080091F /* ImageViewExt.swift */,
+				DB5BDF63270136550048A9CD /* TableViewExt.swift */,
+				DB5BDF65270136680048A9CD /* ViewExt.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		DB66C09A269A637800C191B5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,10 +232,11 @@
 		DBB94F5A2699B036004B0700 /* Game Catalogue */ = {
 			isa = PBXGroup;
 			children = (
-				DBAEDA0826D7E2A40080091F /* Enum */,
 				DBB94F702699B060004B0700 /* Base */,
-				DBB94F712699B085004B0700 /* View */,
 				DBB94F722699B091004B0700 /* Controller */,
+				DBB94F712699B085004B0700 /* View */,
+				DB5BDF62270135EF0048A9CD /* Extensions */,
+				DBAEDA0826D7E2A40080091F /* Enum */,
 				DB66C0A8269A731800C191B5 /* ViewModels */,
 				DB66C09A269A637800C191B5 /* Models */,
 				DB66C09F269A6E9900C191B5 /* Services */,
@@ -262,7 +281,6 @@
 			isa = PBXGroup;
 			children = (
 				DB1BF1752700030E0003336E /* Database */,
-				DBAEDA1326D87FF80080091F /* ImageViewExt.swift */,
 				DBAEDA1526D8F9C00080091F /* ConvertDate.swift */,
 				DB2E5C9E26F557230086E0DD /* Debouncer.swift */,
 				DB04BEB226FD367900686CFC /* Observable.swift */,
@@ -286,6 +304,8 @@
 		DBC8929D26F2D85C005DF4E2 /* Bookmarked */ = {
 			isa = PBXGroup;
 			children = (
+				DB1BF17A270015280003336E /* BookmarksViewController.swift */,
+				DB1BF17B270015280003336E /* BookmarksViewController.xib */,
 			);
 			path = Bookmarked;
 			sourceTree = "<group>";
@@ -367,6 +387,7 @@
 				DB2E5CA526F585660086E0DD /* CustomBackgroundView.xib in Resources */,
 				DBD288E526FEC4B80054D9DE /* ShimmerGameTableViewCell.xib in Resources */,
 				DBB94F652699B040004B0700 /* Assets.xcassets in Resources */,
+				DB1BF17D270015280003336E /* BookmarksViewController.xib in Resources */,
 				DBDCDC5C26E9903E0035D4F5 /* HeaderGamesTableView.xib in Resources */,
 				DBB94F822699D8A2004B0700 /* GamesViewController.xib in Resources */,
 				DBC892A526F4034A005DF4E2 /* DetailCollectionViewCell.xib in Resources */,
@@ -423,6 +444,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DBD5AEEC26F15A460016F2C0 /* GamesTopFooterCollectionReusableView.swift in Sources */,
+				DB5BDF64270136550048A9CD /* TableViewExt.swift in Sources */,
 				DBD288EC26FF44C60054D9DE /* ShimmerGamesTopCollectionViewCell.swift in Sources */,
 				DBB94F812699D8A2004B0700 /* GamesViewController.swift in Sources */,
 				DB2E5C9F26F557230086E0DD /* Debouncer.swift in Sources */,
@@ -434,6 +456,7 @@
 				DBC892A026F2D87C005DF4E2 /* DetailGameViewController.swift in Sources */,
 				DBD288DE26FEC1960054D9DE /* ShimmerView.swift in Sources */,
 				DB66C0AA269A733700C191B5 /* GamesViewModel.swift in Sources */,
+				DB1BF17C270015280003336E /* BookmarksViewController.swift in Sources */,
 				DBAEDA0526D7E2800080091F /* Resource.swift in Sources */,
 				DBD288E426FEC4B80054D9DE /* ShimmerGameTableViewCell.swift in Sources */,
 				DB8D78BC26E4C0520071796A /* GameTableViewCell.swift in Sources */,
@@ -444,6 +467,7 @@
 				DB1BF177270003200003336E /* DatabaseCall.swift in Sources */,
 				DB66C09C269A638D00C191B5 /* Games.swift in Sources */,
 				DBD288EF26FF69200054D9DE /* ConvertType.swift in Sources */,
+				DB5BDF66270136680048A9CD /* ViewExt.swift in Sources */,
 				DBAEDA0726D7E2970080091F /* GameType.swift in Sources */,
 				DBB94F782699D7AB004B0700 /* TabBarController.swift in Sources */,
 				DB66C0A1269A6F6100C191B5 /* ConstService.swift in Sources */,

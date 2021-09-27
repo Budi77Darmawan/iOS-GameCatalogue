@@ -22,10 +22,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     games.title = "Games"
     games.tabBarItem = UITabBarItem(title: "Games", image: UIImage(systemName: "gamecontroller.fill"), tag: 0)
     
+    let bookmarks = BookmarksViewController(nibName: "BookmarksViewController", bundle: nil)
+    bookmarks.title = "Bookmarks"
+    bookmarks.tabBarItem = UITabBarItem(title: "Bookmarks", image: UIImage(systemName: "bookmark.fill"), tag: 1)
+    
     
     let tabBar = TabBarController(nibName: "TabBarController", bundle: nil)
     tabBar.viewControllers = [
-      makeNavigation(vc: games)
+      makeNavigation(vc: games),
+      makeNavigation(vc: bookmarks)
     ]
     
     window = UIWindow(frame: windowScene.coordinateSpace.bounds)

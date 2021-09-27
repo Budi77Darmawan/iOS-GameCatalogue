@@ -38,7 +38,6 @@ class DetailGameViewController: UIViewController {
     
     checkDatabase()
     initCollectionView()
-    observerDetailGame()
   }
   
   private func checkDatabase() {
@@ -53,6 +52,7 @@ class DetailGameViewController: UIViewController {
       guard let detail = detailGame else { return }
       setupView(detail: detail)
     } else {
+      observerDetailGame()
       gamesViewModel.getDetailGameById(id: id)
       isBookmark = false
     }
@@ -153,6 +153,7 @@ class DetailGameViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     title = "Detail Game"
     navigationItem.largeTitleDisplayMode = .never
+    tabBarController?.tabBar.isHidden = true
   }
 }
 
