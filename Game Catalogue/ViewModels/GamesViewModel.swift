@@ -97,9 +97,9 @@ class GamesViewModel: NSObject {
     }
   }
   
-  func loadNextPageGames(lastGame: Game, type: GameType) {
+  func loadNextPageGames(lastGame: Game, type: GameType) -> Bool {
     if !isLoadNextPage(lastGame, type) {
-      return
+      return false
     }
     
     pages += 1
@@ -173,6 +173,7 @@ class GamesViewModel: NSObject {
         self.onLoadNextPage = false
       }
     }
+    return true
   }
   
   private func isLoadNextPage(_ lastGame: Game, _ type: GameType) -> Bool {

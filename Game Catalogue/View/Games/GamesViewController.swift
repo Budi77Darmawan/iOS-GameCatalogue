@@ -14,24 +14,17 @@ class GamesViewController: UIViewController {
   @IBOutlet weak var gamesTopCollectionView: UICollectionView!
   @IBOutlet weak var gamesTableView: UITableView!
   @IBOutlet weak var heightTable: NSLayoutConstraint!
-  @IBOutlet weak var widthStack: NSLayoutConstraint!
   @IBOutlet weak var iconCapsule: UIImageView!
   @IBOutlet weak var tvGamesType: UILabel!
   
-  private let searchController = UISearchController(searchResultsController: nil)
-  private lazy var gamesViewModel: GamesViewModel! = {
+  private let searchController = UISearchController(searchResultsController: SearchGamesViewController())
+  private lazy var gamesViewModel: GamesViewModel = {
     return GamesViewModel()
-  }()
-  private lazy var debouncer: Debouncer! = {
-    return Debouncer(delay: 0.5, callback: self.callGetGamesByQuery)
   }()
   
   private var listGames: [Game] = [Game]()
-  private var listGamesByQuery: [Game] = [Game]()
   private var listGamesTop: [Game] = [Game]()
   private let screenSize: CGRect = UIScreen.main.bounds
-  private var querySearch = ""
-  private var onSearch = false
   private var stateTableView = StateView.loading
   private var stateCollectionView = StateView.loading
   
@@ -40,6 +33,7 @@ class GamesViewController: UIViewController {
     searchController.delegate = self
     searchController.searchResultsUpdater = self
     searchController.obscuresBackgroundDuringPresentation = false
+    searchController.showsSearchResultsController = true
     navigationItem.searchController = searchController
     
     initView()
@@ -52,14 +46,14 @@ class GamesViewController: UIViewController {
     gamesViewModel.listGames.bind { games in
       switch games {
       case .loading:
-        self.stateTableView = StateView.loading
+        self.stateTableView = .loading
         self.updateTableView()
       case .error(let msg, _):
         print(msg ?? "ERROR")
       case .success(let data):
+        self.stateTableView = .showing
         let results = data?.results ?? []
         self.listGames.append(contentsOf: results)
-        self.stateTableView = StateView.showing
         self.updateTableView()
       case .none:
         break
@@ -69,33 +63,15 @@ class GamesViewController: UIViewController {
     gamesViewModel.listGamesTopRated.bind { games in
       switch games {
       case .loading:
-        self.stateCollectionView = StateView.loading
+        self.stateCollectionView = .loading
         self.updateCollectionView()
       case .error(let msg, _):
         print(msg ?? "ERROR")
       case .success(let data):
+        self.stateCollectionView = .showing
         let results = data?.results ?? []
         self.listGamesTop.append(contentsOf: Array(results.prefix(5)))
-        self.stateCollectionView = StateView.showing
         self.updateCollectionView()
-      case .none:
-        break
-      }
-    }
-    
-    gamesViewModel.listGamesBySearch.bind { games in
-      switch games {
-      case .loading:
-        self.stateTableView = StateView.loading
-        self.updateTableView()
-      case .error(let msg, _):
-        print(msg ?? "ERROR")
-      case .success(let data):
-        let results = data?.results ?? []
-        self.listGamesByQuery.removeAll()
-        self.listGamesByQuery.append(contentsOf: results)
-        self.stateTableView = StateView.showing
-        self.updateTableView()
       case .none:
         break
       }
@@ -105,12 +81,7 @@ class GamesViewController: UIViewController {
     gamesViewModel.getGamesTopRated()
   }
   
-  private func callGetGamesByQuery() {
-    gamesViewModel.getGamesBySearch(query: querySearch)
-  }
-  
   private func initView() {
-    widthStack.constant = screenSize.width
     tvGamesType.text = "Top Rated"
     iconCapsule.backgroundColor = .systemBlue
     iconCapsule.rounded(4)
@@ -119,8 +90,6 @@ class GamesViewController: UIViewController {
   private func initTableView() {
     gamesTableView.register(GameTableViewCell.nib(),
                             forCellReuseIdentifier: GameTableViewCell.identifier)
-    gamesTableView.register(ShimmerGameTableViewCell.nib(),
-                            forCellReuseIdentifier: ShimmerGameTableViewCell.identifier)
     gamesTableView.register(HeaderGamesTableView.nib(),
                             forHeaderFooterViewReuseIdentifier: HeaderGamesTableView.identifier)
     gamesTableView.delegate = self
@@ -131,8 +100,6 @@ class GamesViewController: UIViewController {
   private func initCollectionView() {
     gamesTopCollectionView.register(GameTopCollectionViewCell.nib(),
                                     forCellWithReuseIdentifier: GameTopCollectionViewCell.identifier)
-    gamesTopCollectionView.register(ShimmerGamesTopCollectionViewCell.nib(),
-                                    forCellWithReuseIdentifier: ShimmerGamesTopCollectionViewCell.identifier)
     gamesTopCollectionView.register(GamesTopFooterCollectionReusableView.nib(),
                                     forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
                                     withReuseIdentifier: GamesTopFooterCollectionReusableView.identifier)
@@ -142,23 +109,7 @@ class GamesViewController: UIViewController {
   
   private func updateTableView() {
     DispatchQueue.main.async {
-      if self.listGamesByQuery.isEmpty {
-        self.gamesTableView.setBackgroundViewWithImage(image: UIImage(named: "icon_error_search"),
-                                                       message: "Game \"\(self.querySearch)\" not found!",
-                                                       insideScrollView: true)
-      } else {
-        self.gamesTableView.restore(separator: .singleLine)
-      }
-      self.gamesTableView.reloadData()
-    }
-  }
-  
-  private func setEmptyTableView() {
-    DispatchQueue.main.async {
-      self.listGamesByQuery.removeAll()
-      self.gamesTableView.setBackgroundViewWithImage(image: UIImage(named: "icon_search"),
-                                                     message: "Waiting to search ...",
-                                                     insideScrollView: true)
+      self.gamesTableView.restore(separator: .singleLine)
       self.gamesTableView.reloadData()
     }
   }
@@ -192,43 +143,23 @@ class GamesViewController: UIViewController {
 // MARK: TableView
 extension GamesViewController: UITableViewDataSource, UITableViewDelegate {
   func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    switch stateTableView {
-    case .loading:
-      return 8
-    case .showing:
-      if onSearch {
-        return listGamesByQuery.count
-      } else {
-        return listGames.count
-      }
-    }
+    return stateTableView == .loading ? 8 : listGames.count
   }
   
   func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    switch stateTableView {
-    case .loading:
-      guard let cell = tableView.dequeueReusableCell(
-              withIdentifier: ShimmerGameTableViewCell.identifier, for: indexPath) as? ShimmerGameTableViewCell else {
-        return UITableViewCell()
-      }
-      cell.selectionStyle = .none
-      return cell
-    case .showing:
-      guard let cell = tableView.dequeueReusableCell(
-              withIdentifier: GameTableViewCell.identifier, for: indexPath) as? GameTableViewCell else {
-        return UITableViewCell()
-      }
-      
-      let game: Game
-      if onSearch {
-        game = self.listGamesByQuery[indexPath.row]
-      } else {
-        game = self.listGames[indexPath.row]
-      }
-      cell.configureCell(game)
-      cell.selectionStyle = .none
-      return cell
+    
+    guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: GameTableViewCell.identifier, for: indexPath) as? GameTableViewCell else {
+      return UITableViewCell()
     }
+    
+    if cell.state(stateTableView) {
+      let game: Game
+      game = self.listGames[indexPath.row]
+      cell.configureCell(game)
+    }
+    cell.selectionStyle = .none
+    return cell
   }
   
   func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -236,24 +167,12 @@ extension GamesViewController: UITableViewDataSource, UITableViewDelegate {
             withIdentifier: HeaderGamesTableView.identifier) as? HeaderGamesTableView else {
       return nil
     }
-    if onSearch {
-      header.configureContents(title: "List Game \"\(querySearch)\"")
-    } else {
-      header.configureContents(title: "All Lists")
-    }
+    header.configureContents(title: "All Lists")
     return header
   }
   
   func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    if onSearch {
-      if querySearch.isEmpty {
-        return 0
-      } else {
-        return 50
-      }
-    } else {
-      return 50
-    }
+    return 50
   }
   
   func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -262,12 +181,8 @@ extension GamesViewController: UITableViewDataSource, UITableViewDelegate {
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    if stateTableView == StateView.showing {
-      if onSearch {
-        navigateToDetailGame(id: listGamesByQuery[indexPath.row].id)
-      } else {
-        navigateToDetailGame(id: listGames[indexPath.row].id)
-      }
+    if stateTableView == .showing {
+      navigateToDetailGame(id: listGames[indexPath.row].id)
     }
   }
 }
@@ -276,28 +191,19 @@ extension GamesViewController: UITableViewDataSource, UITableViewDelegate {
 extension GamesViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    switch stateCollectionView {
-    case .loading:
-      return 3
-    case .showing:
-      return listGamesTop.count
-    }
+    return stateCollectionView == .loading ? 3 : listGamesTop.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    switch stateCollectionView {
-    case .loading:
-      guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ShimmerGamesTopCollectionViewCell.identifier, for: indexPath) as? ShimmerGamesTopCollectionViewCell else {
-        return UICollectionViewCell()
-      }
-      return cell
-    case .showing:
-      guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GameTopCollectionViewCell.identifier, for: indexPath) as? GameTopCollectionViewCell else {
-        return UICollectionViewCell()
-      }
-      cell.configureCell(listGamesTop[indexPath.row])
-      return cell
+    
+    guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GameTopCollectionViewCell.identifier, for: indexPath) as? GameTopCollectionViewCell else {
+      return UICollectionViewCell()
     }
+    if cell.state(stateCollectionView) {
+      cell.configureCell(listGamesTop[indexPath.row])
+    }
+    return cell
+    
   }
   
   func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -336,39 +242,19 @@ extension GamesViewController: UICollectionViewDataSource, UICollectionViewDeleg
 // MARK: Search
 extension GamesViewController: UISearchResultsUpdating, UISearchControllerDelegate {
   func didPresentSearchController(_ searchController: UISearchController) {
-    onSearch = true
-    headerTop.isHidden = true
-    gamesTopCollectionView.isHidden = true
     tabBarController?.tabBar.isHidden = true
-    setEmptyTableView()
   }
   
   func didDismissSearchController(_ searchController: UISearchController) {
-    onSearch = false
-    headerTop.isHidden = false
-    gamesTopCollectionView.isHidden = false
     tabBarController?.tabBar.isHidden = false
-    DispatchQueue.main.async {
-      self.gamesTableView.reloadData()
-    }
   }
   
   func updateSearchResults(for searchController: UISearchController) {
-    guard var searchText = searchController.searchBar.text else {
+    guard let searchText = searchController.searchBar.text else {
       return
     }
-    searchText = searchText.trimmingCharacters(in: .whitespaces)
-    if self.querySearch == searchText {
-      return
-    }
-    self.querySearch = searchText
-    
-    if self.querySearch.isEmpty {
-      setEmptyTableView()
-      debouncer.cancel()
-    } else {
-      debouncer.call()
-    }
+    let controller = searchController.searchResultsController as! SearchGamesViewController
+    controller.updateQuery(query: searchText)
   }
 }
 

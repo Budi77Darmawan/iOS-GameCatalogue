@@ -10,9 +10,8 @@ import UIKit
 
 extension UITableView {
   
-  func setBackgroundViewWithImage(image: UIImage?, message: String, insideScrollView: Bool = false) {
-    let screenHeight = UIScreen.main.bounds.height
-    let parentView = UIView(frame: CGRect(x: self.center.x, y: self.center.y, width: self.bounds.size.width, height: screenHeight))
+  func setBackgroundViewWithImage(image: UIImage?, message: String) {
+    let parentView = UIView(frame: CGRect(x: self.center.x, y: self.center.y, width: self.bounds.size.width, height: self.bounds.size.height))
     
     let messageImageView = UIImageView()
     let messageLabel = UILabel()
@@ -29,12 +28,7 @@ extension UITableView {
     parentView.addSubview(messageImageView)
     
     messageImageView.centerXAnchor.constraint(equalTo: parentView.centerXAnchor).isActive = true
-    if insideScrollView {
-      let screenHeight = UIScreen.main.bounds.height
-      messageImageView.topAnchor.constraint(equalTo: parentView.topAnchor, constant: (screenHeight/2)-130).isActive = true
-    } else {
-      messageImageView.centerYAnchor.constraint(equalTo: parentView.centerYAnchor, constant: -20).isActive = true
-    }
+    messageImageView.centerYAnchor.constraint(equalTo: parentView.centerYAnchor, constant: -20).isActive = true
     messageImageView.widthAnchor.constraint(equalToConstant: 130).isActive = true
     messageImageView.heightAnchor.constraint(equalToConstant: 130).isActive = true
     

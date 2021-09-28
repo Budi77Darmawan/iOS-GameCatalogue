@@ -83,6 +83,7 @@
                 <outlet property="iconNext" destination="My7-aI-dsY" id="iDH-9Z-KWf"/>
                 <outlet property="imgGame" destination="f3p-jP-zB9" id="8eL-Ch-te7"/>
                 <outlet property="imgRating" destination="Mgg-Hl-Em0" id="iww-7X-x9l"/>
+                <outlet property="rootStack" destination="hgO-Ow-zDJ" id="lX0-i8-xDB"/>
                 <outlet property="tvRatingCount" destination="Lay-Ma-Y6a" id="Fxe-1k-A5f"/>
                 <outlet property="tvReleased" destination="kV5-Lu-Cph" id="oqF-z2-1cJ"/>
                 <outlet property="tvTitle" destination="Y9z-er-PfL" id="6Lz-G3-ql1"/>

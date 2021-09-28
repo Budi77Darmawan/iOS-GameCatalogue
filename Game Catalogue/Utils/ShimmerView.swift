@@ -9,18 +9,31 @@ import Foundation
 import UIKit
 
 class ShimmerView: UIView {
-  private func addGradientLayer(
-    _ colorOne: CGColor,
-    _ colorTwo: CGColor
-  ) -> CAGradientLayer {
-    let gradientLayer = CAGradientLayer()
-    gradientLayer.frame = self.bounds
-    gradientLayer.startPoint = CGPoint(x: 0.0, y: 1.0)
-    gradientLayer.endPoint = CGPoint(x: 1.0, y: 1.0)
-    gradientLayer.colors = [colorOne, colorTwo, colorOne]
-    gradientLayer.locations = [0.0, 0.5, 1.0]
-    self.layer.addSublayer(gradientLayer)
-    return gradientLayer
+  private let gradient : CAGradientLayer = CAGradientLayer()
+  
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+  }
+  
+  required init?(coder: NSCoder) {
+    super.init(coder: coder)
+  }
+  
+  override func layoutSublayers(of layer: CALayer) {
+    super.layoutSublayers(of: layer)
+    gradient.frame = self.bounds
+  }
+  
+  override func draw(_ rect: CGRect) {
+    super.draw(rect)
+    gradient.frame = self.bounds
+    gradient.startPoint = CGPoint(x: 0.0, y: 1.0)
+    gradient.endPoint = CGPoint(x: 1.0, y: 1.0)
+    gradient.locations = [0.0, 0.5, 1.0]
+    self.layer.addSublayer(gradient)
+    if gradient.superlayer == nil {
+      layer.insertSublayer(gradient, at: 0)
+    }
   }
   
   private func addAnimation() -> CABasicAnimation {
@@ -47,11 +60,8 @@ class ShimmerView: UIView {
       colorOne = UIColor(white: 0.85, alpha: 1.0).cgColor
       colorTwo = UIColor(white: 0.9, alpha: 1.0).cgColor
     }
-    
-    
-    let gradientLayer = addGradientLayer(colorOne, colorTwo)
     let animation = addAnimation()
-    gradientLayer.add(animation, forKey: animation.keyPath)
+    gradient.colors = [colorOne, colorTwo, colorOne]
+    gradient.add(animation, forKey: animation.keyPath)
   }
-  
 }
