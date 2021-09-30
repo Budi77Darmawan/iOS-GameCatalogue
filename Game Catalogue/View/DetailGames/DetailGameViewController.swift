@@ -145,7 +145,7 @@ class DetailGameViewController: UIViewController {
       btnBookmark.tintColor = .systemBlue
       btnBookmark.backgroundColor = .clear
     }
-    btnBookmark.layer.cornerRadius = 8
+    btnBookmark.cornerRadius(8)
     btnBookmark.layer.borderWidth = 1
     btnBookmark.layer.borderColor = UIColor.systemBlue.cgColor
   }

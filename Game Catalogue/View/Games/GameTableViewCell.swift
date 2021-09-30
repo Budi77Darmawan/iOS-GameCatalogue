@@ -78,7 +78,7 @@ class GameTableViewCell: UITableViewCell {
   }
   
   private func setLoadingState() {
-    iconNext.isHidden = true
+    iconNext.visible()
     shimmer.translatesAutoresizingMaskIntoConstraints = false
     shimmerRoot.translatesAutoresizingMaskIntoConstraints = false
     shimmerImage.translatesAutoresizingMaskIntoConstraints = false
@@ -135,7 +135,7 @@ class GameTableViewCell: UITableViewCell {
   }
   
   private func removeLoadingState() {
-    iconNext.isHidden = false
+    iconNext.gone()
     shimmer.removeFromSuperview()
     shimmerRoot.removeFromSuperview()
     shimmerImage.removeFromSuperview()

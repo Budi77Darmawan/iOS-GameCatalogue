@@ -24,8 +24,7 @@ class GameTopCollectionViewCell: UICollectionViewCell {
   override func awakeFromNib() {
     super.awakeFromNib()
     imgGame.rounded(10)
-    tvTitle.layer.cornerRadius = 5
-    tvTitle.layer.masksToBounds = true
+    tvTitle.cornerRadius(5)
   }
   
   func configureCell(_ game: Game) {

@@ -65,6 +65,7 @@ class ListGamesViewController: UIViewController {
       case .success(let data):
         self.stateTableView = .showing
         let results = data?.results ?? []
+        self.listGames.removeAll()
         self.listGames.append(contentsOf: results)
         self.updateTableView()
       case .none:
@@ -76,8 +77,6 @@ class ListGamesViewController: UIViewController {
   private func initTableView() {
     gamesTableView.register(GameTableViewCell.nib(),
                             forCellReuseIdentifier: GameTableViewCell.identifier)
-    gamesTableView.register(HeaderGamesTableView.nib(),
-                            forHeaderFooterViewReuseIdentifier: HeaderGamesTableView.identifier)
     gamesTableView.delegate = self
     gamesTableView.dataSource = self
     gamesTableView.tableFooterView = UIView()
@@ -96,7 +95,7 @@ class ListGamesViewController: UIViewController {
   }
   
   override func viewWillAppear(_ animated: Bool) {
-    title = "Games"
+    title = "Top Rated"
     navigationItem.largeTitleDisplayMode = .never
     tabBarController?.tabBar.isHidden = true
   }
@@ -133,19 +132,6 @@ extension ListGamesViewController: UITableViewDataSource, UITableViewDelegate {
       withShimmer = !gamesViewModel.loadNextPageGames(lastGame: game, type: type)
     }
     return cell
-  }
-  
-  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    guard let header = gamesTableView.dequeueReusableHeaderFooterView(
-            withIdentifier: HeaderGamesTableView.identifier) as? HeaderGamesTableView else {
-      return nil
-    }
-    header.configureContents(title: titleTable)
-    return header
-  }
-  
-  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    return 50
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

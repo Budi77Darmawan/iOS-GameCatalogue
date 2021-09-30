@@ -8,23 +8,31 @@
 import UIKit
 
 protocol SearchProtocol {
-  func updateQuery(query: String)
+  func onClickItem(id: Int)
 }
 
-class SearchGamesViewController: UIViewController, SearchProtocol {
+class SearchGamesViewController: UIViewController {
   
-  func updateQuery(query: String) {
-    querySearch = query.trimmingCharacters(in: .whitespaces)
-    if querySearch.isEmpty {
-      debouncer.cancel()
-      setEmptyTableView()
-    } else {
-      debouncer.call()
+  func delegateSearchProtocol(_ searchProtocol: SearchProtocol) {
+    self.searchProtocol = searchProtocol
+  }
+  
+  func searchGames(querySearch: String) {
+    let query = querySearch.trimmingCharacters(in: .whitespaces)
+    if self.querySearch != query {
+      self.querySearch = query
+      if self.querySearch.isEmpty {
+        debouncer.cancel()
+        setEmptyTableView()
+      } else {
+        debouncer.call()
+      }
     }
   }
   
   @IBOutlet weak var gamesTableView: UITableView!
   
+  var searchProtocol: SearchProtocol? = nil
   private lazy var gamesViewModel: GamesViewModel = {
     return GamesViewModel()
   }()
@@ -35,6 +43,10 @@ class SearchGamesViewController: UIViewController, SearchProtocol {
   private var listGamesByQuery: [Game] = [Game]()
   private var querySearch = ""
   private var stateTableView = StateView.loading
+  
+  override func viewWillAppear(_ animated: Bool) {
+    setEmptyTableView()
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -80,7 +92,11 @@ class SearchGamesViewController: UIViewController, SearchProtocol {
   
   private func updateTableView() {
     DispatchQueue.main.async {
-      if self.listGamesByQuery.isEmpty {
+      if self.querySearch.isEmpty {
+        self.listGamesByQuery.removeAll()
+        self.gamesTableView.setBackgroundViewWithImage(image: UIImage(named: "icon_search"),
+                                                       message: "Waiting to search ...")
+      } else if self.listGamesByQuery.isEmpty {
         self.gamesTableView.setBackgroundViewWithImage(image: UIImage(named: "icon_error_search"),
                                                        message: "Game \"\(self.querySearch)\" not found!")
       } else {
@@ -91,18 +107,12 @@ class SearchGamesViewController: UIViewController, SearchProtocol {
   }
   
   private func setEmptyTableView() {
+    self.listGamesByQuery.removeAll()
+    self.gamesTableView.setBackgroundViewWithImage(image: UIImage(named: "icon_search"),
+                                                   message: "Waiting to search ...")
     DispatchQueue.main.async {
-      self.listGamesByQuery.removeAll()
-      self.gamesTableView.setBackgroundViewWithImage(image: UIImage(named: "icon_search"),
-                                                     message: "Waiting to search ...")
       self.gamesTableView.reloadData()
     }
-  }
-  
-  private func navigateToDetailGame(id: Int) {
-    let detailVC = DetailGameViewController(nibName: "DetailGameViewController", bundle: nil)
-    detailVC.gameID = id
-    self.navigationController?.pushViewController(detailVC, animated: true)
   }
 }
 
@@ -145,8 +155,8 @@ extension SearchGamesViewController: UITableViewDataSource, UITableViewDelegate 
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    if stateTableView == StateView.showing {
-      navigateToDetailGame(id: listGamesByQuery[indexPath.row].id)
+    if stateTableView == .showing {
+      searchProtocol?.onClickItem(id: listGamesByQuery[indexPath.row].id)
     }
   }
 }

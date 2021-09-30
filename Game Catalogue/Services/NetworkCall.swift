@@ -14,9 +14,21 @@ class NetworkCall : NSObject {
   var method: HTTPMethod = .get
   var parameters: Parameters? = nil
   
-  init(url: String, params: Parameters?){
+  init(url: String, parameters: Parameters? = nil){
     super.init()
     self.url += url
+    
+    let paramAPIKey: Parameters = [
+      "key": ConstService.KeyAPI
+    ]
+    
+    guard var params = parameters else {
+      self.parameters = paramAPIKey
+      return
+    }
+    params.merge(paramAPIKey) { first,_ in
+      first
+    }
     self.parameters = params
   }
   

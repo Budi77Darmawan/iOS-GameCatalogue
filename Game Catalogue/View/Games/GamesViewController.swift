@@ -27,6 +27,7 @@ class GamesViewController: UIViewController {
   private let screenSize: CGRect = UIScreen.main.bounds
   private var stateTableView = StateView.loading
   private var stateCollectionView = StateView.loading
+  private var onSearch = false
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -35,6 +36,7 @@ class GamesViewController: UIViewController {
     searchController.obscuresBackgroundDuringPresentation = false
     searchController.showsSearchResultsController = true
     navigationItem.searchController = searchController
+    navigationItem.hidesSearchBarWhenScrolling = false
     
     initView()
     initTableView()
@@ -136,7 +138,8 @@ class GamesViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     navigationController?.navigationBar.prefersLargeTitles = true
     navigationItem.largeTitleDisplayMode = .always
-    tabBarController?.tabBar.isHidden = false
+    let tabBarHide = onSearch ? true : false
+    tabBarController?.tabBar.isHidden = tabBarHide
   }
 }
 
@@ -191,7 +194,7 @@ extension GamesViewController: UITableViewDataSource, UITableViewDelegate {
 extension GamesViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    return stateCollectionView == .loading ? 3 : listGamesTop.count
+    return stateCollectionView == .loading ? 5 : listGamesTop.count
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -242,10 +245,15 @@ extension GamesViewController: UICollectionViewDataSource, UICollectionViewDeleg
 // MARK: Search
 extension GamesViewController: UISearchResultsUpdating, UISearchControllerDelegate {
   func didPresentSearchController(_ searchController: UISearchController) {
+    onSearch = true
     tabBarController?.tabBar.isHidden = true
+    if let controller = searchController.searchResultsController as? SearchGamesViewController {
+      controller.delegateSearchProtocol(self)
+    }
   }
   
   func didDismissSearchController(_ searchController: UISearchController) {
+    onSearch = false
     tabBarController?.tabBar.isHidden = false
   }
   
@@ -253,8 +261,17 @@ extension GamesViewController: UISearchResultsUpdating, UISearchControllerDelega
     guard let searchText = searchController.searchBar.text else {
       return
     }
-    let controller = searchController.searchResultsController as! SearchGamesViewController
-    controller.updateQuery(query: searchText)
+    if let controller = searchController.searchResultsController as? SearchGamesViewController {
+      controller.searchGames(querySearch: searchText)
+    }
   }
+}
+
+// MARK: Search Protocol
+extension GamesViewController: SearchProtocol {
+  func onClickItem(id: Int) {
+    navigateToDetailGame(id: id)
+  }
+  
 }
 

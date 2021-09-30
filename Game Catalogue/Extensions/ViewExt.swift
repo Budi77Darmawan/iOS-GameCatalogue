@@ -9,8 +9,16 @@ import Foundation
 import UIKit
 
 extension UIView {
-  func cornerRadius(_ radius: CGFloat = 0) {
+  func cornerRadius(_ radius: CGFloat) {
     self.layer.cornerRadius = radius
     self.clipsToBounds = true
+  }
+  
+  func visible() {
+    self.isHidden = false
+  }
+  
+  func gone() {
+    self.isHidden = true
   }
 }
