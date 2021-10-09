@@ -14,6 +14,8 @@
 		DB1BF17C270015280003336E /* BookmarksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB1BF17A270015280003336E /* BookmarksViewController.swift */; };
 		DB1BF17D270015280003336E /* BookmarksViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB1BF17B270015280003336E /* BookmarksViewController.xib */; };
 		DB2E5C9F26F557230086E0DD /* Debouncer.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB2E5C9E26F557230086E0DD /* Debouncer.swift */; };
+		DB4BB2FE27080D830032F5C6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB4BB2FC27080D830032F5C6 /* ProfileViewController.swift */; };
+		DB4BB2FF27080D830032F5C6 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB4BB2FD27080D830032F5C6 /* ProfileViewController.xib */; };
 		DB5BDF64270136550048A9CD /* TableViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5BDF63270136550048A9CD /* TableViewExt.swift */; };
 		DB5BDF66270136680048A9CD /* ViewExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5BDF65270136680048A9CD /* ViewExt.swift */; };
 		DB66C09C269A638D00C191B5 /* Games.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB66C09B269A638D00C191B5 /* Games.swift */; };
@@ -52,6 +54,9 @@
 		DBD5AEED26F15A460016F2C0 /* GamesTopFooterCollectionReusableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBD5AEEB26F15A460016F2C0 /* GamesTopFooterCollectionReusableView.xib */; };
 		DBDCDC5C26E9903E0035D4F5 /* HeaderGamesTableView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBDCDC5B26E9903E0035D4F5 /* HeaderGamesTableView.xib */; };
 		DBEF529426E823DA00243206 /* HeaderGamesTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBEF529326E823DA00243206 /* HeaderGamesTableView.swift */; };
+		DBFCB3C227090DF10000E182 /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFCB3C127090DF10000E182 /* Profile.swift */; };
+		DBFCB3C52709A0630000E182 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBFCB3C32709A0630000E182 /* EditProfileViewController.swift */; };
+		DBFCB3C62709A0630000E182 /* EditProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = DBFCB3C42709A0630000E182 /* EditProfileViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +69,8 @@
 		DB1BF17A270015280003336E /* BookmarksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarksViewController.swift; sourceTree = "<group>"; };
 		DB1BF17B270015280003336E /* BookmarksViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BookmarksViewController.xib; sourceTree = "<group>"; };
 		DB2E5C9E26F557230086E0DD /* Debouncer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debouncer.swift; sourceTree = "<group>"; };
+		DB4BB2FC27080D830032F5C6 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		DB4BB2FD27080D830032F5C6 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		DB5BDF63270136550048A9CD /* TableViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewExt.swift; sourceTree = "<group>"; };
 		DB5BDF65270136680048A9CD /* ViewExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExt.swift; sourceTree = "<group>"; };
 		DB66C09B269A638D00C191B5 /* Games.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Games.swift; sourceTree = "<group>"; };
@@ -104,6 +111,9 @@
 		DBD5AEEB26F15A460016F2C0 /* GamesTopFooterCollectionReusableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GamesTopFooterCollectionReusableView.xib; sourceTree = "<group>"; };
 		DBDCDC5B26E9903E0035D4F5 /* HeaderGamesTableView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderGamesTableView.xib; sourceTree = "<group>"; };
 		DBEF529326E823DA00243206 /* HeaderGamesTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderGamesTableView.swift; sourceTree = "<group>"; };
+		DBFCB3C127090DF10000E182 /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		DBFCB3C32709A0630000E182 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		DBFCB3C42709A0630000E182 /* EditProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditProfileViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +166,17 @@
 			path = Games;
 			sourceTree = "<group>";
 		};
+		DB4BB2FB27080D470032F5C6 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				DB4BB2FC27080D830032F5C6 /* ProfileViewController.swift */,
+				DB4BB2FD27080D830032F5C6 /* ProfileViewController.xib */,
+				DBFCB3C32709A0630000E182 /* EditProfileViewController.swift */,
+				DBFCB3C42709A0630000E182 /* EditProfileViewController.xib */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
 		DB5BDF62270135EF0048A9CD /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +192,7 @@
 			children = (
 				DB66C09B269A638D00C191B5 /* Games.swift */,
 				DB1BF178270003470003336E /* ObjGame.swift */,
+				DBFCB3C127090DF10000E182 /* Profile.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -253,9 +275,10 @@
 		DBB94F712699B085004B0700 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				DBC8929D26F2D85C005DF4E2 /* Bookmarked */,
-				DBC8929C26F2D846005DF4E2 /* DetailGames */,
 				DB1F0DD426F02B2F002B4176 /* Games */,
+				DBC8929C26F2D846005DF4E2 /* DetailGames */,
+				DBC8929D26F2D85C005DF4E2 /* Bookmarked */,
+				DB4BB2FB27080D470032F5C6 /* Profile */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -371,12 +394,14 @@
 				DBB94F682699B040004B0700 /* LaunchScreen.storyboard in Resources */,
 				DBC892A126F2D87C005DF4E2 /* DetailGameViewController.xib in Resources */,
 				DBD5AEED26F15A460016F2C0 /* GamesTopFooterCollectionReusableView.xib in Resources */,
+				DB4BB2FF27080D830032F5C6 /* ProfileViewController.xib in Resources */,
 				DB8A1F7F270275EC0064A01F /* SearchGamesViewController.xib in Resources */,
 				DB8D78BD26E4C0520071796A /* GameTableViewCell.xib in Resources */,
 				DBAEC5B026EC64C8001E1B16 /* GameTopCollectionViewCell.xib in Resources */,
 				DBC8929B26F23A4B005DF4E2 /* ListGamesViewController.xib in Resources */,
 				DBB94F652699B040004B0700 /* Assets.xcassets in Resources */,
 				DB1BF17D270015280003336E /* BookmarksViewController.xib in Resources */,
+				DBFCB3C62709A0630000E182 /* EditProfileViewController.xib in Resources */,
 				DBDCDC5C26E9903E0035D4F5 /* HeaderGamesTableView.xib in Resources */,
 				DBB94F822699D8A2004B0700 /* GamesViewController.xib in Resources */,
 				DBC892A526F4034A005DF4E2 /* DetailCollectionViewCell.xib in Resources */,
@@ -438,16 +463,19 @@
 				DB2E5C9F26F557230086E0DD /* Debouncer.swift in Sources */,
 				DBAEDA1626D8F9C00080091F /* ConvertDate.swift in Sources */,
 				DB8A1F7E270275EC0064A01F /* SearchGamesViewController.swift in Sources */,
+				DB4BB2FE27080D830032F5C6 /* ProfileViewController.swift in Sources */,
 				DBC892A426F4034A005DF4E2 /* DetailCollectionViewCell.swift in Sources */,
 				DB66C0A5269A71CB00C191B5 /* NetworkCall.swift in Sources */,
 				DBC8929A26F23A4B005DF4E2 /* ListGamesViewController.swift in Sources */,
 				DBD288E926FF1A040054D9DE /* StateView.swift in Sources */,
 				DBC892A026F2D87C005DF4E2 /* DetailGameViewController.swift in Sources */,
 				DBD288DE26FEC1960054D9DE /* ShimmerView.swift in Sources */,
+				DBFCB3C52709A0630000E182 /* EditProfileViewController.swift in Sources */,
 				DB66C0AA269A733700C191B5 /* GamesViewModel.swift in Sources */,
 				DB1BF17C270015280003336E /* BookmarksViewController.swift in Sources */,
 				DBAEDA0526D7E2800080091F /* Resource.swift in Sources */,
 				DB8D78BC26E4C0520071796A /* GameTableViewCell.swift in Sources */,
+				DBFCB3C227090DF10000E182 /* Profile.swift in Sources */,
 				DB1BF179270003470003336E /* ObjGame.swift in Sources */,
 				DBAEDA1426D87FF80080091F /* ImageViewExt.swift in Sources */,
 				DBD288E726FEDCD90054D9DE /* ShimmerColor.swift in Sources */,

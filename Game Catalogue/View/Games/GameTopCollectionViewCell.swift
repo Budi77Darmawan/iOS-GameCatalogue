@@ -23,7 +23,7 @@ class GameTopCollectionViewCell: UICollectionViewCell {
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    imgGame.rounded(10)
+    imgGame.cornerRadius(10)
     tvTitle.cornerRadius(5)
   }
   

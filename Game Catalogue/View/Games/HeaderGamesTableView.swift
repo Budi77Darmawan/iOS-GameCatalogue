@@ -20,6 +20,6 @@ class HeaderGamesTableView: UITableViewHeaderFooterView {
   func configureContents(title: String) {
     tvTitle.text = title
     iconCapsule.backgroundColor = .systemBlue
-    iconCapsule.rounded(4)
+    iconCapsule.cornerRadius(4)
   }
 }

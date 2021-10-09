@@ -22,8 +22,6 @@ class BookmarksViewController: UIViewController {
   private func initTableView() {
     gamesTableView.register(GameTableViewCell.nib(),
                             forCellReuseIdentifier: GameTableViewCell.identifier)
-    gamesTableView.register(HeaderGamesTableView.nib(),
-                            forHeaderFooterViewReuseIdentifier: HeaderGamesTableView.identifier)
     gamesTableView.delegate = self
     gamesTableView.dataSource = self
     gamesTableView.tableFooterView = UIView()
@@ -73,23 +71,6 @@ extension BookmarksViewController: UITableViewDataSource, UITableViewDelegate {
     cell.configureCell(detailGame)
     cell.selectionStyle = .none
     return cell
-  }
-  
-  func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-    guard let header = gamesTableView.dequeueReusableHeaderFooterView(
-            withIdentifier: HeaderGamesTableView.identifier) as? HeaderGamesTableView else {
-      return nil
-    }
-    header.configureContents(title: "All Lists")
-    return header
-  }
-  
-  func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-    if listGames.isEmpty {
-      return 0
-    } else {
-      return 50
-    }
   }
   
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

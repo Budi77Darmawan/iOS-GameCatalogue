@@ -19,15 +19,4 @@ extension UIImageView {
     self.kf.setImage(with: URL(string: urlImage))
   }
   
-  func makeRounded() {
-    self.layer.cornerRadius = self.frame.height / 2
-    self.clipsToBounds = true
-    self.layer.borderWidth = 0.6
-    self.layer.borderColor = UIColor.darkGray.cgColor
-  }
-
-  func rounded(_ rounded: CGFloat = 0) {
-    self.layer.cornerRadius = rounded
-    self.clipsToBounds = true
-  }
 }

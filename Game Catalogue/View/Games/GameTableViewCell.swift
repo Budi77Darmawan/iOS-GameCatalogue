@@ -51,7 +51,7 @@ class GameTableViewCell: UITableViewCell {
   
   override func awakeFromNib() {
     super.awakeFromNib()
-    imgGame.rounded(10)
+    imgGame.cornerRadius(10)
     iconNext.image = UIImage(systemName: "chevron.right")
     iconNext.tintColor = .gray
   }

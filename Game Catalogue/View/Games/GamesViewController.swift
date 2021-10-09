@@ -86,7 +86,7 @@ class GamesViewController: UIViewController {
   private func initView() {
     tvGamesType.text = "Top Rated"
     iconCapsule.backgroundColor = .systemBlue
-    iconCapsule.rounded(4)
+    iconCapsule.cornerRadius(4)
   }
   
   private func initTableView() {

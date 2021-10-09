@@ -18,6 +18,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
     guard let windowScene = scene as? UIWindowScene else { return }
     
+    Profile.synchronize()
+    let dataProfile = Profile.objProfile
+    if dataProfile.name.isEmpty || dataProfile.numberPhone.isEmpty || dataProfile.email.isEmpty {
+      Profile.objProfile = Profile(name: "Budi Darmawan", numberPhone: "082211112222", email: "budi@buaya.com")
+    }
+    
     let games = GamesViewController(nibName: "GamesViewController", bundle: nil)
     games.title = "Games"
     games.tabBarItem = UITabBarItem(title: "Games", image: UIImage(systemName: "gamecontroller.fill"), tag: 0)
@@ -26,11 +32,15 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     bookmarks.title = "Bookmarks"
     bookmarks.tabBarItem = UITabBarItem(title: "Bookmarks", image: UIImage(systemName: "bookmark.fill"), tag: 1)
     
+    let profile = ProfileViewController(nibName: "ProfileViewController", bundle: nil)
+    profile.title = "Profile"
+    profile.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "person.fill"), tag: 2)
     
     let tabBar = TabBarController(nibName: "TabBarController", bundle: nil)
     tabBar.viewControllers = [
       makeNavigation(vc: games),
-      makeNavigation(vc: bookmarks)
+      makeNavigation(vc: bookmarks),
+      makeNavigation(vc: profile)
     ]
     
     window = UIWindow(frame: windowScene.coordinateSpace.bounds)
